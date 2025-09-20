@@ -134,7 +134,7 @@ end
 function SwarmManager:updateCurrentDroneSettingsProfile(partial_profile)
 	self.commandManager:updateCurrentDroneProfile(partial_profile)
 	self.commandManager:switchToSwarmProfile(false)
-	self.commandManager:setDroneType(partial_profile.drone_type)
+	self.commandManager:setDroneType(partial_profile.drone_type or "DEFAULT")
 	self.root:onLayout()
 end
 
