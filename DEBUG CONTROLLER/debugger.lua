@@ -25,16 +25,16 @@ local DRONE_IDs = {}
 function getDroneIDsFromJSON()
 	local h = fs.open("./drone_ids.json","r")
 	local json_string = h.readLine()
-	local droneIDs = JSON:decode(json_string)
+	local droneIDs = textutils.unserializeJSON(json_string)
 	h.close()
-	for i=1,#droneIDs do
-		droneIDs[i] = tostring(droneIDs[i])
-	end
 	return droneIDs
 end
 
-table.insert(DRONE_IDs,getDroneIDsFromJSON())
+DRONE_IDs = getDroneIDsFromJSON()
+
+print("DRONE_IDs:")
 print(textutils.serialise(DRONE_IDs))
+
 local ORBIT_FORMATION = {
 	--vector.new(5,3,5),
 }

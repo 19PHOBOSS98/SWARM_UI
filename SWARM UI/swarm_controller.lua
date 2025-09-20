@@ -8,7 +8,7 @@ local ScrollBar = require 'lib.gui.ScrollBar'
 local Constants = require 'lib.gui.Constants'
 local ScrollWidget = require 'lib.gui.ScrollWidget'
 local Object = require 'lib.object.Object'
-local JSON = require "lib.JSON"
+
 os.loadAPI("lib/list_manager.lua")
 local IndexedListScroller = list_manager.IndexedListScroller
 local remoteUI = require 'lib.custom_gui.remoteUI'
@@ -97,7 +97,7 @@ local drone_ids_list = {}
 function getDroneIDsFromJSON()
 	local h = fs.open("./drone_ids.json","r")
 	local json_string = h.readLine()
-	local droneIDs = JSON:decode(json_string)
+	local droneIDs = textutils.unserializeJSON(json_string)
 	h.close()
 	for i=1,#droneIDs do
 		droneIDs[i] = tostring(droneIDs[i])
